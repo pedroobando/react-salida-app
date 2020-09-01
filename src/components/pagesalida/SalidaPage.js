@@ -80,12 +80,10 @@ export const SalidaPage = () => {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-8">
-            <div class="form-group">
-              <label>Material o Equipo</label>
-              <textarea type="" class="form-control" rows="1"></textarea>
-            </div>
+        <div className="form-row">
+          <div class="form-group col-md-8">
+            <label>Material o Equipo</label>
+            <textarea type="" class="form-control" rows="1"></textarea>
           </div>
           <div className="col-4 mt-sm-0 mt-md-4">
             <div class="form-check">
@@ -115,6 +113,76 @@ export const SalidaPage = () => {
             </div>
           </div>
         </div>
+
+        <div className="form-row">
+          <div className="form-group col-md-12">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="inlineCheckbox1"
+                value="option1"
+              />
+              <label class="form-check-label" for="inlineCheckbox1">
+                Motivo Salida 1
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="inlineCheckbox2"
+                value="option2"
+              />
+              <label class="form-check-label" for="inlineCheckbox2">
+                Motivo Salida 2
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="inlineCheckbox3"
+                value="option3"
+                disabled
+              />
+              <label class="form-check-label" for="inlineCheckbox3">
+                Motivo Salida 3
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div className="form-row">
+          <div class="form-group col-md-12">
+            <label>Direccion destino</label>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+
+        <div className="form-row">
+          <div class="form-group col-md-6">
+            <label>Estado</label>
+            <div className="d-flex">
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Ciudad</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+        </div>
+
+        {/* <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select> */}
       </form>
       <div className="col-2 bg-secondary">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur tempora aut
