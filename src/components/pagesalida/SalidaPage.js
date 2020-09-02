@@ -28,7 +28,7 @@ export const SalidaPage = () => {
         </ul>
       </div>
 
-      <form className="col-7 bg-white">
+      <form className="col-6 bg-white">
         <div className="form-row">
           <div className="form-group col-md-6">
             <label>Cedula</label>
@@ -241,7 +241,115 @@ export const SalidaPage = () => {
         </div>
       </form>
 
-      <div className="col-2 bg-secondary"></div>
+      <div className="col-3 bg-white">
+        <div className="card border-primary mb-3">
+          <div className="card-header">Aprobadores</div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck2" />
+                <label class="custom-control-label" for="customCheck2">
+                  Aprobador Luis
+                </label>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck3" />
+                <label class="custom-control-label" for="customCheck3">
+                  Aprobador Maria
+                </label>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck4" />
+                <label class="custom-control-label" for="customCheck4">
+                  Aprobador Sami
+                </label>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck5" />
+                <label class="custom-control-label" for="customCheck5">
+                  Jose Martinez
+                </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="alert alert-dismissible alert-warning" style={{ padding: 8 }}>
+            <div class="d-flex flex-row justify-content-between">
+              <div class="flex-column">
+                <div class="bd-highlight">
+                  <small>ADM-0814-145</small>
+                </div>
+                <div class="bd-highlight">
+                  <small>Hidroneumatico</small>
+                </div>
+              </div>
+              <div class="flex-column">
+                <div class="bd-highlight align-items-end text-center">8</div>
+                <div class="bd-highlight align-items-end text-left">MAY-2020</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-dismissible alert-warning" style={{ padding: 8 }}>
+            <div class="d-flex flex-row justify-content-between">
+              <div class="flex-column">
+                <div class="bd-highlight">
+                  <small>ADM-0814-145</small>
+                </div>
+                <div class="bd-highlight">
+                  <small>Hidroneumatico</small>
+                </div>
+              </div>
+              <div class="flex-column">
+                <div class="bd-highlight align-items-end text-center">8</div>
+                <div class="bd-highlight align-items-end text-left">MAY-2020</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-dismissible bg-secondary" style={{ padding: 8 }}>
+            <div class="d-flex flex-row justify-content-between">
+              <div class="flex-column">
+                <div class="bd-highlight">
+                  <small>ADM-0814-145</small>
+                </div>
+                <div class="bd-highlight">
+                  <small>Hidroneumatico</small>
+                </div>
+              </div>
+              <div class="flex-column">
+                <div class="bd-highlight align-items-end text-center">8</div>
+                <div class="bd-highlight align-items-end text-left">MAY-2020</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-dismissible bg-secondary" style={{ padding: 8 }}>
+            <div class="d-flex flex-row justify-content-between">
+              <div class="flex-column">
+                <div class="bd-highlight">
+                  <small>ADM-0814-145</small>
+                </div>
+                <div class="bd-highlight">
+                  <small>Hidroneumatico</small>
+                </div>
+              </div>
+              <div class="flex-column">
+                <div class="bd-highlight align-items-end text-center">8</div>
+                <div class="bd-highlight align-items-end text-left">MAY-2020</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
