@@ -32,7 +32,7 @@ export const DashboardPage = () => {
 
   return (
     <div className="container">
-      <div className="row justify-content-between my-3">
+      <div className="row justify-content-between mt-5">
         {totales.map((totalItem, indice) => (
           <DashboardCard key={indice} {...totalItem} />
         ))}

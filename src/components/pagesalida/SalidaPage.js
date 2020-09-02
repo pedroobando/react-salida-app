@@ -4,18 +4,16 @@ export const SalidaPage = () => {
   return (
     <div className="d-flex">
       <div className="col-3 bg-secondary">
-        <div className="">
-          <button className="btn btn-primary btn-block mb-2">Nueva Salida</button>
-          <form className="form-inline">
-            <input
-              type="text"
-              className="form-control col-8"
-              placeholder="Numero Salida"
-              name="numero"
-            />
-            <button className="btn btn-outline-primary col-4">Buscar</button>
-          </form>
-        </div>
+        <button className="btn btn-primary btn-block mb-2">Nueva Salida</button>
+
+        <form className="input-group">
+          <input type="text" className="form-control" placeholder="V/E-20.547.645" />
+          <div className="input-group-append">
+            <button className="btn btn-outline-primary" type="button" id="button-addon2">
+              Buscar
+            </button>
+          </div>
+        </form>
 
         <ul className="list-group my-3">
           <li className="list-group-item d-flex justify-content-between align-items-center">
@@ -29,85 +27,117 @@ export const SalidaPage = () => {
           </li>
         </ul>
       </div>
+
       <form className="col-7 bg-white">
         <div className="form-row">
-          <div class="form-group col-md-6">
+          <div className="form-group col-md-6">
             <label>Cedula</label>
-            <div className="d-flex">
-              <input type="text" class="form-control" placeholder="name@example.com" />
-              <button className="btn btn-secondary">Buscar</button>
+            <div className="input-group">
+              <input type="text" className="form-control" placeholder="V/E-20.547.645" />
+              <div className="input-group-append">
+                <button
+                  className="btn btn-outline-secondary"
+                  type="button"
+                  id="button-addon2">
+                  Buscar
+                </button>
+              </div>
             </div>
           </div>
-          <div class="form-group col-md-6">
+          <div className="form-group col-md-6">
             <label>Nombre</label>
-            <input type="text" class="form-control" placeholder="name@example.com" />
+            <input type="text" className="form-control" readOnly />
           </div>
         </div>
 
         <div className="form-row">
-          <div class="form-group col-md-6">
-            <label>Veh. Placa</label>
-            <input type="text" class="form-control" />
+          <div className="form-group col-md-6 ">
+            <label>Vehiculo Placa</label>
+            <div className="input-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Indique placa vehiculo"
+              />
+              <div className="input-group-append">
+                <button
+                  className="btn btn-outline-secondary"
+                  type="button"
+                  id="button-addon2">
+                  Buscar
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group col-md-6">
+          <div className="form-group col-md-6">
             <label>Marca</label>
-            <input type="text" class="form-control" placeholder="" />
+            <input type="text" className="form-control" readOnly />
           </div>
         </div>
 
         <div className="form-row">
-          <div class="form-group col-md-6">
+          <div className="form-group col-md-6">
             <label>Modelo</label>
-            <input type="text" class="form-control" />
+            <input type="text" className="form-control" readOnly />
           </div>
 
-          <div class="form-group col-md-6">
+          <div className="form-group col-md-6">
             <label>Color</label>
-            <input type="text" class="form-control" />
+            <input type="text" className="form-control" readOnly />
           </div>
         </div>
 
         <div className="form-row">
-          <div class="form-group col-md-6">
-            <label>Conducto CI:</label>
-            <input type="text" class="form-control" />
+          <div className="form-group col-md-6">
+            <label>Conductor CI:</label>
+            <div className="input-group">
+              <input type="text" className="form-control" placeholder="V/E-20.547.645" />
+              <div className="input-group-append">
+                <button
+                  className="btn btn-outline-secondary"
+                  type="button"
+                  id="button-addon2">
+                  Buscar
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group col-md-6">
+          <div className="form-group col-md-6">
             <label>Conducto Nombre</label>
-            <input type="text" class="form-control" />
+            <input type="text" className="form-control" readOnly />
           </div>
         </div>
 
         <div className="form-row">
-          <div class="form-group col-md-8">
+          <div className="form-group col-md-8">
             <label>Material o Equipo</label>
-            <textarea type="" class="form-control" rows="1"></textarea>
+            <textarea type="" className="form-control" rows="1"></textarea>
           </div>
           <div className="col-4 mt-sm-0 mt-md-4">
-            <div class="form-check">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="radio"
                 name="exampleRadios"
                 id="exampleRadios1"
                 value="option1"
                 checked
               />
-              <label class="form-check-label" for="exampleRadios1">
+              <label className="form-check-label" for="exampleRadios1">
                 Retornara a Planta
               </label>
             </div>
-            <div class="form-check">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="radio"
                 name="exampleRadios"
                 id="exampleRadios2"
                 value="option2"
               />
-              <label class="form-check-label" for="exampleRadios2">
+              <label className="form-check-label" for="exampleRadios2">
                 Desincorporacion
               </label>
             </div>
@@ -116,37 +146,37 @@ export const SalidaPage = () => {
 
         <div className="form-row">
           <div className="form-group col-md-12">
-            <div class="form-check form-check-inline">
+            <div className="form-check form-check-inline">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 id="inlineCheckbox1"
                 value="option1"
               />
-              <label class="form-check-label" for="inlineCheckbox1">
+              <label className="form-check-label" for="inlineCheckbox1">
                 Motivo Salida 1
               </label>
             </div>
-            <div class="form-check form-check-inline">
+            <div className="form-check form-check-inline">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 id="inlineCheckbox2"
                 value="option2"
               />
-              <label class="form-check-label" for="inlineCheckbox2">
+              <label className="form-check-label" for="inlineCheckbox2">
                 Motivo Salida 2
               </label>
             </div>
-            <div class="form-check form-check-inline">
+            <div className="form-check form-check-inline">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 id="inlineCheckbox3"
                 value="option3"
                 disabled
               />
-              <label class="form-check-label" for="inlineCheckbox3">
+              <label className="form-check-label" for="inlineCheckbox3">
                 Motivo Salida 3
               </label>
             </div>
@@ -154,52 +184,64 @@ export const SalidaPage = () => {
         </div>
 
         <div className="form-row">
-          <div class="form-group col-md-12">
+          <div className="form-group col-md-12">
             <label>Direccion destino</label>
-            <input type="text" class="form-control" />
+            <input type="text" className="form-control" />
           </div>
         </div>
 
         <div className="form-row">
-          <div class="form-group col-md-6">
+          <div className="form-group col-md-6">
             <label>Estado</label>
-            <div className="d-flex">
-              <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
-              </select>
-            </div>
+            <select className="custom-select" id="inputGroupSelect01">
+              <option selected>Seleccione...</option>
+              <option value="1">Anzoategui</option>
+              <option value="2">Monagas</option>
+              <option value="3">...</option>
+              <option value="4">Zulia</option>
+            </select>
           </div>
-          <div class="form-group col-md-6">
+          <div className="form-group col-md-6">
             <label>Ciudad</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
+            <select className="custom-select" id="inputGroupSelect01">
+              <option selected>Seleccione...</option>
+              <option value="1">Valencia</option>
+              <option value="2">Caracas</option>
+              <option value="3">Tinaquillo</option>
+              <option value="4">Maracaibo</option>
             </select>
           </div>
         </div>
 
-        {/* <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select> */}
+        <div className="form-row">
+          <div className="form-group col-md-12">
+            <label>Observaciones</label>
+            <textarea type="text" className="form-control" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div className="form-row justify-content-between">
+          <img
+            src="/assets/img/motor.png"
+            alt="..."
+            className="img-fluid img-thumbnail col-md-3"
+          />
+        </div>
+
+        <hr />
+
+        <div className="form-row justify-content-between">
+          <div>
+            <div className="btn btn-outline-danger">Anular</div>
+          </div>
+          <div>
+            <div className="btn btn-primary mr-1">Borrador</div>
+            <div className="btn btn-success">P/Aprobar</div>
+          </div>
+        </div>
       </form>
-      <div className="col-2 bg-secondary">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur tempora aut
-        sunt porro illo cumque voluptatibus nihil maiores adipisci eveniet ad vero magni,
-        repellendus atque rerum expedita consequuntur perferendis odio.
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores
-          perspiciatis ipsa labore atque? Quam ratione adipisci nobis cupiditate facere
-          quia velit totam laborum debitis harum libero, illo doloribus eaque aspernatur.
-          Quisquam recusandae consequatur, voluptatibus debitis est vero expedita et ex
-          eius ut! Ipsam alias consequatur impedit, itaque est ad porro tenetur. Ipsa sed
-          voluptatem, enim eius voluptatibus facere at quisquam! Quas rerum reiciendis
-          labore explicabo facere praesentium, ratione magni nostrum placeat? Cum
-          accusantium fugit temporibus harum numquam voluptatem! Est iusto itaque eius cum
-          officiis suscipit iste debitis praesentium ipsa mollitia!
-        </p>
-      </div>
+
+      <div className="col-2 bg-secondary"></div>
     </div>
   );
 };
