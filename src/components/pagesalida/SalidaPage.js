@@ -1,34 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const SalidaPage = () => {
+  const [state, setState] = useState({ checkRetorno: false });
+
+  const handleRetorno = (event) => {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    // console.log(name, value);
+    setState({
+      [name]: value,
+    });
+  };
+
   return (
     <div className="d-flex">
-      <div className="col-3 bg-secondary">
-        <button className="btn btn-primary btn-block mb-2">Nueva Salida</button>
+      <div className="col-12 col-sm-12 col-md-2">
+        <button className="btn btn-outline-primary btn-block mb-2">Nueva Salida</button>
 
-        <form className="input-group">
+        {/* <form className="input-group">
           <input type="text" className="form-control" placeholder="V/E-20.547.645" />
           <div className="input-group-append">
             <button className="btn btn-outline-primary" type="button" id="button-addon2">
               Buscar
             </button>
           </div>
-        </form>
+        </form> */}
 
-        <ul className="list-group my-3">
-          <li className="list-group-item d-flex justify-content-between align-items-center">
-            Cras justo odio
-          </li>
-          <li className="list-group-item d-flex justify-content-between align-items-center">
-            Dapibus ac facilisis in
-          </li>
-          <li className="list-group-item d-flex justify-content-between align-items-center">
-            Morbi leo risus
-          </li>
-        </ul>
+        <div className="card border-secondary mt-3">
+          <div className="card-header">Borrador</div>
+
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">
+              <small className="d-block">ADM-0820</small>
+              <small className="d-block">Leonardo Ruiz</small>
+            </li>
+            <li className="list-group-item">
+              <small>No. ADM-0520-092</small>
+            </li>
+            <li className="list-group-item">
+              <small>No. ADM-7820-212</small>
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <form className="col-6 bg-white">
+      <form className="col-12 col-sm-12 col-md-7">
         <div className="form-row">
           <div className="form-group col-md-6">
             <label>Cedula</label>
@@ -111,38 +129,23 @@ export const SalidaPage = () => {
         </div>
 
         <div className="form-row">
-          <div className="form-group col-md-8">
-            <label>Material o Equipo</label>
-            <textarea type="" className="form-control" rows="1"></textarea>
-          </div>
-          <div className="col-4 mt-sm-0 mt-md-4">
-            <div className="form-check">
+          <div className="form-group col-md-12">
+            <label>
+              Material o Equipo - (Retornara
               <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-                checked
+                type="checkbox"
+                className="ml-2"
+                name="checkRetorno"
+                checked={state.checkRetorno}
+                onChange={handleRetorno}
               />
-              <label className="form-check-label" for="exampleRadios1">
-                Retornara a Planta
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios2"
-                value="option2"
-              />
-              <label className="form-check-label" for="exampleRadios2">
-                Desincorporacion
-              </label>
-            </div>
+              )
+            </label>
+            <input type="text" className="form-control" />
           </div>
         </div>
+
+        <div className="form-row"></div>
 
         <div className="form-row">
           <div className="form-group col-md-12">
@@ -153,9 +156,7 @@ export const SalidaPage = () => {
                 id="inlineCheckbox1"
                 value="option1"
               />
-              <label className="form-check-label" for="inlineCheckbox1">
-                Motivo Salida 1
-              </label>
+              <label className="form-check-label">Motivo Salida 1</label>
             </div>
             <div className="form-check form-check-inline">
               <input
@@ -164,9 +165,7 @@ export const SalidaPage = () => {
                 id="inlineCheckbox2"
                 value="option2"
               />
-              <label className="form-check-label" for="inlineCheckbox2">
-                Motivo Salida 2
-              </label>
+              <label className="form-check-label">Motivo Salida 2</label>
             </div>
             <div className="form-check form-check-inline">
               <input
@@ -176,9 +175,7 @@ export const SalidaPage = () => {
                 value="option3"
                 disabled
               />
-              <label className="form-check-label" for="inlineCheckbox3">
-                Motivo Salida 3
-              </label>
+              <label className="form-check-label">Motivo Salida 3</label>
             </div>
           </div>
         </div>
@@ -194,7 +191,6 @@ export const SalidaPage = () => {
           <div className="form-group col-md-6">
             <label>Estado</label>
             <select className="custom-select" id="inputGroupSelect01">
-              <option selected>Seleccione...</option>
               <option value="1">Anzoategui</option>
               <option value="2">Monagas</option>
               <option value="3">...</option>
@@ -204,7 +200,6 @@ export const SalidaPage = () => {
           <div className="form-group col-md-6">
             <label>Ciudad</label>
             <select className="custom-select" id="inputGroupSelect01">
-              <option selected>Seleccione...</option>
               <option value="1">Valencia</option>
               <option value="2">Caracas</option>
               <option value="3">Tinaquillo</option>
@@ -241,110 +236,118 @@ export const SalidaPage = () => {
         </div>
       </form>
 
-      <div className="col-3 bg-white">
-        <div className="card border-primary mb-3">
+      <div className="col-12 col-sm-12 col-md-3">
+        <div className="card mb-3">
           <div className="card-header">Aprobadores</div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck2" />
-                <label class="custom-control-label" for="customCheck2">
-                  Aprobador Luis
-                </label>
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">
+              <div className="custom-control custom-checkbox">
+                <input
+                  type="checkbox"
+                  className="custom-control-input"
+                  id="customCheck2"
+                />
+                <label className="custom-control-label">Aprobador Luis</label>
               </div>
             </li>
-            <li class="list-group-item">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck3" />
-                <label class="custom-control-label" for="customCheck3">
-                  Aprobador Maria
-                </label>
+            <li className="list-group-item">
+              <div className="custom-control custom-checkbox">
+                <input
+                  type="checkbox"
+                  className="custom-control-input"
+                  id="customCheck3"
+                />
+                <label className="custom-control-label">Aprobador Maria</label>
               </div>
             </li>
-            <li class="list-group-item">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck4" />
-                <label class="custom-control-label" for="customCheck4">
-                  Aprobador Sami
-                </label>
+            <li className="list-group-item">
+              <div className="custom-control custom-checkbox">
+                <input
+                  type="checkbox"
+                  className="custom-control-input"
+                  id="customCheck4"
+                />
+                <label className="custom-control-label">Aprobador Sami</label>
               </div>
             </li>
-            <li class="list-group-item">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck5" />
-                <label class="custom-control-label" for="customCheck5">
-                  Jose Martinez
-                </label>
+            <li className="list-group-item">
+              <div className="custom-control custom-checkbox">
+                <input
+                  type="checkbox"
+                  className="custom-control-input"
+                  id="customCheck5"
+                />
+                <label className="custom-control-label">Jose Martinez</label>
               </div>
             </li>
           </ul>
         </div>
 
         <div>
-          <div class="alert alert-dismissible alert-warning" style={{ padding: 8 }}>
-            <div class="d-flex flex-row justify-content-between">
-              <div class="flex-column">
-                <div class="bd-highlight">
+          <div className="alert alert-dismissible alert-warning" style={{ padding: 8 }}>
+            <div className="d-flex flex-row justify-content-between">
+              <div className="flex-column">
+                <div className="bd-highlight">
                   <small>ADM-0814-145</small>
                 </div>
-                <div class="bd-highlight">
+                <div className="bd-highlight">
                   <small>Hidroneumatico</small>
                 </div>
               </div>
-              <div class="flex-column">
-                <div class="bd-highlight align-items-end text-center">8</div>
-                <div class="bd-highlight align-items-end text-left">MAY-2020</div>
+              <div className="flex-column">
+                <div className="bd-highlight align-items-end text-center">8</div>
+                <div className="bd-highlight align-items-end text-left">MAY-2020</div>
               </div>
             </div>
           </div>
 
-          <div class="alert alert-dismissible alert-warning" style={{ padding: 8 }}>
-            <div class="d-flex flex-row justify-content-between">
-              <div class="flex-column">
-                <div class="bd-highlight">
+          <div className="alert alert-dismissible alert-warning" style={{ padding: 8 }}>
+            <div className="d-flex flex-row justify-content-between">
+              <div className="flex-column">
+                <div className="bd-highlight">
                   <small>ADM-0814-145</small>
                 </div>
-                <div class="bd-highlight">
+                <div className="bd-highlight">
                   <small>Hidroneumatico</small>
                 </div>
               </div>
-              <div class="flex-column">
-                <div class="bd-highlight align-items-end text-center">8</div>
-                <div class="bd-highlight align-items-end text-left">MAY-2020</div>
+              <div className="flex-column">
+                <div className="bd-highlight align-items-end text-center">8</div>
+                <div className="bd-highlight align-items-end text-left">MAY-2020</div>
               </div>
             </div>
           </div>
 
-          <div class="alert alert-dismissible bg-secondary" style={{ padding: 8 }}>
-            <div class="d-flex flex-row justify-content-between">
-              <div class="flex-column">
-                <div class="bd-highlight">
+          <div className="alert alert-dismissible bg-secondary" style={{ padding: 8 }}>
+            <div className="d-flex flex-row justify-content-between">
+              <div className="flex-column">
+                <div className="bd-highlight">
                   <small>ADM-0814-145</small>
                 </div>
-                <div class="bd-highlight">
+                <div className="bd-highlight">
                   <small>Hidroneumatico</small>
                 </div>
               </div>
-              <div class="flex-column">
-                <div class="bd-highlight align-items-end text-center">8</div>
-                <div class="bd-highlight align-items-end text-left">MAY-2020</div>
+              <div className="flex-column">
+                <div className="bd-highlight align-items-end text-center">8</div>
+                <div className="bd-highlight align-items-end text-left">MAY-2020</div>
               </div>
             </div>
           </div>
 
-          <div class="alert alert-dismissible bg-secondary" style={{ padding: 8 }}>
-            <div class="d-flex flex-row justify-content-between">
-              <div class="flex-column">
-                <div class="bd-highlight">
+          <div className="alert alert-dismissible bg-secondary" style={{ padding: 8 }}>
+            <div className="d-flex flex-row justify-content-between">
+              <div className="flex-column">
+                <div className="bd-highlight">
                   <small>ADM-0814-145</small>
                 </div>
-                <div class="bd-highlight">
+                <div className="bd-highlight">
                   <small>Hidroneumatico</small>
                 </div>
               </div>
-              <div class="flex-column">
-                <div class="bd-highlight align-items-end text-center">8</div>
-                <div class="bd-highlight align-items-end text-left">MAY-2020</div>
+              <div className="flex-column">
+                <div className="bd-highlight align-items-end text-center">8</div>
+                <div className="bd-highlight align-items-end text-left">MAY-2020</div>
               </div>
             </div>
           </div>

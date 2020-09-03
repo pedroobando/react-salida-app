@@ -10,7 +10,7 @@ export const DashboardRouter = () => {
   return (
     <>
       <NavBar />
-      <div className="container">
+      <div className="mx-auto">
         <Switch>
           <Route exact path="/" component={DashboardPage} />
           <Route exact path="/salidas" component={SalidaPage} />
