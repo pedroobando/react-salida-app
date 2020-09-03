@@ -145,8 +145,6 @@ export const SalidaPage = () => {
           </div>
         </div>
 
-        <div className="form-row"></div>
-
         <div className="form-row">
           <div className="form-group col-md-12">
             <div className="form-check form-check-inline">
@@ -173,7 +171,6 @@ export const SalidaPage = () => {
                 type="checkbox"
                 id="inlineCheckbox3"
                 value="option3"
-                disabled
               />
               <label className="form-check-label">Motivo Salida 3</label>
             </div>
@@ -241,13 +238,14 @@ export const SalidaPage = () => {
           <div className="card-header">Aprobadores</div>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
-              <div className="custom-control custom-checkbox">
+              <div className="form-check form-check-inline">
                 <input
+                  className="form-check-input"
                   type="checkbox"
-                  className="custom-control-input"
-                  id="customCheck2"
+                  id="inlineCheckbox1"
+                  value="option1"
                 />
-                <label className="custom-control-label">Aprobador Luis</label>
+                <label className="form-check-label">Aprobador 1</label>
               </div>
             </li>
             <li className="list-group-item">
