@@ -25,9 +25,9 @@ COPY . .
 
 RUN yarn build
 
-EXPOSE 3001
+EXPOSE 3000
 # start app
 # CMD ["yarn","start"]
 
-CMD ["http-server","-p 3001 build"]
+CMD ["http-server","-p 3000 build"]
 # RUN npx http-server -p 3000 build

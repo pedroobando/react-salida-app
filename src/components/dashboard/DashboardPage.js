@@ -10,22 +10,22 @@ export const DashboardPage = () => {
     },
     {
       titleName: 'Aprobadas',
-      totalNumber: 56,
+      totalNumber: 160,
       colorBorde: 'border-success',
     },
     {
       titleName: 'Rechazadas',
-      totalNumber: 56,
+      totalNumber: 12,
       colorBorde: 'border-danger',
     },
     {
       titleName: 'Tot. Salidas',
-      totalNumber: 56,
+      totalNumber: 228,
       colorBorde: 'border-primary',
     },
     {
       titleName: 'Por Retornar',
-      totalNumber: 56,
+      totalNumber: 48,
       colorBorde: 'border-warning',
     },
   ];

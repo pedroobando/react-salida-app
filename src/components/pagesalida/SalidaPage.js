@@ -1,57 +1,111 @@
 import React, { useState } from 'react';
+import { ListaSinTerminar } from './ListaSinTerminar';
+import { useForm } from '../../hooks/useForm';
+import { ListaAprobadores } from './ListaAprobadores';
+import { ListaSalidas } from './ListaSalidas';
+
+const lstAllAprobadores = [
+  { dni: 9547, nombre: 'Camilo Larez', roll: 'ADM', aprobador: false },
+  { dni: 5478, nombre: 'Raiza Mota', roll: 'ADM', aprobador: false },
+  { dni: 1975, nombre: 'Ezperanza Rodriguez', roll: 'GTE', aprobador: false },
+  { dni: 5321, nombre: 'Jose Martinez', roll: 'APB', aprobador: false },
+  { dni: 3323, nombre: 'Juan Pinerua', roll: 'SEG', aprobador: false },
+  { dni: 1925, nombre: 'Pedro Rengel', roll: 'SEG', aprobador: false },
+];
+
+const initialForm = {
+  cedulaField: '',
+  nombreField: '',
+  placaField: '',
+  marcaField: '',
+  modeloField: '',
+  colorField: '',
+  condutorCIField: '',
+  conductorNombreField: '',
+  materialField: '',
+  retornaCheck: true,
+  direccionField: '',
+  estadoField: '',
+  ciudadField: '',
+  observacionField: '',
+  // listaAprobadores: lstAllAprobadores,
+};
+
+const lstSinTerminar = [
+  { nroSalida: 'ADM-124-454', nombre: 'Luis Ocando' },
+  { nroSalida: 'DPT-2322-454', nombre: 'Franco Colonico' },
+  { nroSalida: 'MTT-0820-014', nombre: 'Extintores El Norte' },
+];
 
 export const SalidaPage = () => {
-  const [state, setState] = useState({ checkRetorno: false });
+  const [formValues, handleInputChange, reset] = useForm(initialForm);
+  const [aprobadores, setAprobadores] = useState(lstAllAprobadores);
 
-  const handleRetorno = (event) => {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+  // const { checkRetorno } = formValues;
+  const {
+    cedulaField,
+    nombreField,
+    placaField,
+    marcaField,
+    modeloField,
+    colorField,
+    condutorCIField,
+    conductorNombreField,
+    materialField,
+    retornaCheck,
+    direccionField,
+    estadoField,
+    ciudadField,
+    observacionField,
+    // listaAprobadores,
+  } = formValues;
 
-    // console.log(name, value);
-    setState({
-      [name]: value,
+  const handleClickNuevo = () => {
+    reset();
+  };
+  const handleClickSinTerminar = (numero) => {
+    console.log(numero);
+  };
+
+  const handleClickAprobador = ({ codigo }) => {
+    aprobadores.forEach((elAprobador) => {
+      if (elAprobador.dni === codigo) {
+        elAprobador.aprobador = !elAprobador.aprobador;
+      }
     });
+
+    setAprobadores(aprobadores);
   };
 
   return (
     <div className="d-flex">
       <div className="col-12 col-sm-12 col-md-2">
-        <button className="btn btn-outline-primary btn-block mb-2">Nueva Salida</button>
-
-        {/* <form className="input-group">
-          <input type="text" className="form-control" placeholder="V/E-20.547.645" />
-          <div className="input-group-append">
-            <button className="btn btn-outline-primary" type="button" id="button-addon2">
-              Buscar
-            </button>
-          </div>
-        </form> */}
-
-        <div className="card border-secondary mt-3">
-          <div className="card-header">Borrador</div>
-
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <small className="d-block">ADM-0820</small>
-              <small className="d-block">Leonardo Ruiz</small>
-            </li>
-            <li className="list-group-item">
-              <small>No. ADM-0520-092</small>
-            </li>
-            <li className="list-group-item">
-              <small>No. ADM-7820-212</small>
-            </li>
-          </ul>
-        </div>
+        <button
+          className="btn btn-outline-primary btn-block mb-2"
+          onClick={handleClickNuevo}>
+          Nueva Salida
+        </button>
+        {lstSinTerminar.length >= 1 && (
+          <ListaSinTerminar
+            lstDraf={lstSinTerminar}
+            handleClickSinTerminar={handleClickSinTerminar}
+          />
+        )}
       </div>
 
-      <form className="col-12 col-sm-12 col-md-7">
+      <form className="col-12 col-sm-12 col-md-7 mb-5">
         <div className="form-row">
           <div className="form-group col-md-6">
             <label>Cedula</label>
             <div className="input-group">
-              <input type="text" className="form-control" placeholder="V/E-20.547.645" />
+              <input
+                type="text"
+                className="form-control"
+                placeholder="V/E-20.547.645"
+                name="cedulaField"
+                value={cedulaField}
+                onChange={handleInputChange}
+              />
               <div className="input-group-append">
                 <button
                   className="btn btn-outline-secondary"
@@ -64,7 +118,13 @@ export const SalidaPage = () => {
           </div>
           <div className="form-group col-md-6">
             <label>Nombre</label>
-            <input type="text" className="form-control" readOnly />
+            <input
+              type="text"
+              className="form-control"
+              name="nombreField"
+              value={nombreField}
+              readOnly
+            />
           </div>
         </div>
 
@@ -76,6 +136,9 @@ export const SalidaPage = () => {
                 type="text"
                 className="form-control"
                 placeholder="Indique placa vehiculo"
+                name="placaField"
+                value={placaField}
+                onChange={handleInputChange}
               />
               <div className="input-group-append">
                 <button
@@ -90,19 +153,19 @@ export const SalidaPage = () => {
 
           <div className="form-group col-md-6">
             <label>Marca</label>
-            <input type="text" className="form-control" readOnly />
+            <input type="text" className="form-control" readOnly value={marcaField} />
           </div>
         </div>
 
         <div className="form-row">
           <div className="form-group col-md-6">
             <label>Modelo</label>
-            <input type="text" className="form-control" readOnly />
+            <input type="text" className="form-control" readOnly value={modeloField} />
           </div>
 
           <div className="form-group col-md-6">
             <label>Color</label>
-            <input type="text" className="form-control" readOnly />
+            <input type="text" className="form-control" readOnly value={colorField} />
           </div>
         </div>
 
@@ -110,7 +173,14 @@ export const SalidaPage = () => {
           <div className="form-group col-md-6">
             <label>Conductor CI:</label>
             <div className="input-group">
-              <input type="text" className="form-control" placeholder="V/E-20.547.645" />
+              <input
+                type="text"
+                className="form-control"
+                placeholder="V/E-20.547.645"
+                name="condutorCIField"
+                value={condutorCIField}
+                onChange={handleInputChange}
+              />
               <div className="input-group-append">
                 <button
                   className="btn btn-outline-secondary"
@@ -124,7 +194,12 @@ export const SalidaPage = () => {
 
           <div className="form-group col-md-6">
             <label>Conducto Nombre</label>
-            <input type="text" className="form-control" readOnly />
+            <input
+              type="text"
+              className="form-control"
+              readOnly
+              value={conductorNombreField}
+            />
           </div>
         </div>
 
@@ -135,13 +210,19 @@ export const SalidaPage = () => {
               <input
                 type="checkbox"
                 className="ml-2"
-                name="checkRetorno"
-                checked={state.checkRetorno}
-                onChange={handleRetorno}
+                name="retornaCheck"
+                checked={retornaCheck}
+                onChange={handleInputChange}
               />
               )
             </label>
-            <input type="text" className="form-control" />
+            <input
+              type="text"
+              className="form-control"
+              value={materialField}
+              name="materialField"
+              onChange={handleInputChange}
+            />
           </div>
         </div>
 
@@ -180,14 +261,25 @@ export const SalidaPage = () => {
         <div className="form-row">
           <div className="form-group col-md-12">
             <label>Direccion destino</label>
-            <input type="text" className="form-control" />
+            <input
+              type="text"
+              className="form-control"
+              value={direccionField}
+              name="direccionField"
+              onChange={handleInputChange}
+            />
           </div>
         </div>
 
         <div className="form-row">
           <div className="form-group col-md-6">
             <label>Estado</label>
-            <select className="custom-select" id="inputGroupSelect01">
+            <select
+              className="custom-select"
+              id="inputGroupSelect01"
+              value={estadoField}
+              name="estadoField"
+              onChange={handleInputChange}>
               <option value="1">Anzoategui</option>
               <option value="2">Monagas</option>
               <option value="3">...</option>
@@ -196,7 +288,12 @@ export const SalidaPage = () => {
           </div>
           <div className="form-group col-md-6">
             <label>Ciudad</label>
-            <select className="custom-select" id="inputGroupSelect01">
+            <select
+              className="custom-select"
+              id="inputGroupSelect01"
+              value={ciudadField}
+              name="ciudadField"
+              onChange={handleInputChange}>
               <option value="1">Valencia</option>
               <option value="2">Caracas</option>
               <option value="3">Tinaquillo</option>
@@ -208,7 +305,13 @@ export const SalidaPage = () => {
         <div className="form-row">
           <div className="form-group col-md-12">
             <label>Observaciones</label>
-            <textarea type="text" className="form-control" rows="2"></textarea>
+            <textarea
+              type="text"
+              className="form-control"
+              rows="2"
+              value={observacionField}
+              name="observacionField"
+              onChange={handleInputChange}></textarea>
           </div>
         </div>
 
@@ -234,122 +337,12 @@ export const SalidaPage = () => {
       </form>
 
       <div className="col-12 col-sm-12 col-md-3">
-        <div className="card mb-3">
-          <div className="card-header">Aprobadores</div>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <div className="form-check form-check-inline">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="inlineCheckbox1"
-                  value="option1"
-                />
-                <label className="form-check-label">Aprobador 1</label>
-              </div>
-            </li>
-            <li className="list-group-item">
-              <div className="custom-control custom-checkbox">
-                <input
-                  type="checkbox"
-                  className="custom-control-input"
-                  id="customCheck3"
-                />
-                <label className="custom-control-label">Aprobador Maria</label>
-              </div>
-            </li>
-            <li className="list-group-item">
-              <div className="custom-control custom-checkbox">
-                <input
-                  type="checkbox"
-                  className="custom-control-input"
-                  id="customCheck4"
-                />
-                <label className="custom-control-label">Aprobador Sami</label>
-              </div>
-            </li>
-            <li className="list-group-item">
-              <div className="custom-control custom-checkbox">
-                <input
-                  type="checkbox"
-                  className="custom-control-input"
-                  id="customCheck5"
-                />
-                <label className="custom-control-label">Jose Martinez</label>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <ListaAprobadores
+          lstAprobadores={aprobadores}
+          handleClickAprobador={handleClickAprobador}
+        />
 
-        <div>
-          <div className="alert alert-dismissible alert-warning" style={{ padding: 8 }}>
-            <div className="d-flex flex-row justify-content-between">
-              <div className="flex-column">
-                <div className="bd-highlight">
-                  <small>ADM-0814-145</small>
-                </div>
-                <div className="bd-highlight">
-                  <small>Hidroneumatico</small>
-                </div>
-              </div>
-              <div className="flex-column">
-                <div className="bd-highlight align-items-end text-center">8</div>
-                <div className="bd-highlight align-items-end text-left">MAY-2020</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="alert alert-dismissible alert-warning" style={{ padding: 8 }}>
-            <div className="d-flex flex-row justify-content-between">
-              <div className="flex-column">
-                <div className="bd-highlight">
-                  <small>ADM-0814-145</small>
-                </div>
-                <div className="bd-highlight">
-                  <small>Hidroneumatico</small>
-                </div>
-              </div>
-              <div className="flex-column">
-                <div className="bd-highlight align-items-end text-center">8</div>
-                <div className="bd-highlight align-items-end text-left">MAY-2020</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="alert alert-dismissible bg-secondary" style={{ padding: 8 }}>
-            <div className="d-flex flex-row justify-content-between">
-              <div className="flex-column">
-                <div className="bd-highlight">
-                  <small>ADM-0814-145</small>
-                </div>
-                <div className="bd-highlight">
-                  <small>Hidroneumatico</small>
-                </div>
-              </div>
-              <div className="flex-column">
-                <div className="bd-highlight align-items-end text-center">8</div>
-                <div className="bd-highlight align-items-end text-left">MAY-2020</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="alert alert-dismissible bg-secondary" style={{ padding: 8 }}>
-            <div className="d-flex flex-row justify-content-between">
-              <div className="flex-column">
-                <div className="bd-highlight">
-                  <small>ADM-0814-145</small>
-                </div>
-                <div className="bd-highlight">
-                  <small>Hidroneumatico</small>
-                </div>
-              </div>
-              <div className="flex-column">
-                <div className="bd-highlight align-items-end text-center">8</div>
-                <div className="bd-highlight align-items-end text-left">MAY-2020</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ListaSalidas />
       </div>
     </div>
   );
