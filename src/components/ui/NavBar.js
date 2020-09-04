@@ -5,7 +5,7 @@ export const NavBar = () => {
   const urlImagen = '/avatar.png';
   // console.log(urlImagen);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary sticky-top mb-3">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary sticky-top px-4 mb-3">
       <Link className="navbar-brand" to="/">
         Apps
       </Link>

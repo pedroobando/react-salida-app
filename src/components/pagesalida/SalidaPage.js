@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ListaSinTerminar } from './ListaSinTerminar';
 import { useForm } from '../../hooks/useForm';
 import { ListaAprobadores } from './ListaAprobadores';
-import { ListaSalidas } from './ListaSalidas';
+import { ListaTerminada } from './ListaTerminada';
 
 const lstAllAprobadores = [
   { dni: 9547, nombre: 'Camilo Larez', roll: 'ADM', aprobador: false },
@@ -35,6 +35,27 @@ const lstSinTerminar = [
   { nroSalida: 'ADM-124-454', nombre: 'Luis Ocando' },
   { nroSalida: 'DPT-2322-454', nombre: 'Franco Colonico' },
   { nroSalida: 'MTT-0820-014', nombre: 'Extintores El Norte' },
+];
+
+const lstTerminadas = [
+  {
+    nroSalida: 'ADM-124-454',
+    nombre: 'Luis Ocando',
+    sinRetorno: true,
+    fecha: Date.now(),
+  },
+  {
+    nroSalida: 'DPT-2322-454',
+    nombre: 'Franco Colonico',
+    sinRetorno: false,
+    fecha: Date.now(),
+  },
+  {
+    nroSalida: 'MTT-0820-014',
+    nombre: 'Extintores El Norte',
+    sinRetorno: false,
+    fecha: Date.now(),
+  },
 ];
 
 export const SalidaPage = () => {
@@ -78,8 +99,9 @@ export const SalidaPage = () => {
   };
 
   return (
-    <div className="d-flex">
-      <div className="col-12 col-sm-12 col-md-2">
+    <div className="row flex-xl-nowrap">
+      {/* col-12 col-sm-12 col-md-2 */}
+      <div className="col-md-2 col-xl-2 bg-sidebar">
         <button
           className="btn btn-outline-primary btn-block mb-2"
           onClick={handleClickNuevo}>
@@ -93,7 +115,8 @@ export const SalidaPage = () => {
         )}
       </div>
 
-      <form className="col-12 col-sm-12 col-md-7 mb-5">
+      {/* col-12 col-sm-12 col-md-7 mb-5 */}
+      <form className="col-md-8 col-xl-7 py-md-3 bd-content" role="main">
         <div className="form-row">
           <div className="form-group col-md-6">
             <label>Cedula</label>
@@ -335,14 +358,14 @@ export const SalidaPage = () => {
           </div>
         </div>
       </form>
-
-      <div className="col-12 col-sm-12 col-md-3">
+      {/* col-12 col-sm-12 col-md-3 */}
+      <div className="col-md-2 d-xl-block col-xl-3 bd-toc">
         <ListaAprobadores
           lstAprobadores={aprobadores}
           handleClickAprobador={handleClickAprobador}
         />
 
-        <ListaSalidas />
+        <ListaTerminada lstPersona={lstTerminadas} />
       </div>
     </div>
   );

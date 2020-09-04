@@ -13,7 +13,8 @@ const ItemAprobador = ({ dni, nombre, roll, aprobador, handleClickAprobador }) =
           onChange={() => handleClickAprobador({ codigo: dni })}
         />
         <label className="form-check-label">
-          {nombre} - {roll}
+          {nombre}
+          <span className="d-md-none d-lg-inline"> - {roll}</span>
         </label>
       </div>
     </li>
