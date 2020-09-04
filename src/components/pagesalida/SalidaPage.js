@@ -4,14 +4,7 @@ import { useForm } from '../../hooks/useForm';
 import { ListaAprobadores } from './ListaAprobadores';
 import { ListaTerminada } from './ListaTerminada';
 
-const lstAllAprobadores = [
-  { dni: 9547, nombre: 'Camilo Larez', roll: 'ADM', aprobador: false },
-  { dni: 5478, nombre: 'Raiza Mota', roll: 'ADM', aprobador: false },
-  { dni: 1975, nombre: 'Ezperanza Rodriguez', roll: 'GTE', aprobador: false },
-  { dni: 5321, nombre: 'Jose Martinez', roll: 'APB', aprobador: false },
-  { dni: 3323, nombre: 'Juan Pinerua', roll: 'SEG', aprobador: false },
-  { dni: 1925, nombre: 'Pedro Rengel', roll: 'SEG', aprobador: false },
-];
+import { lstAllAprobadores, lstSinTerminar, lstTerminadas, lstPersonas } from './Datos';
 
 const initialForm = {
   cedulaField: '',
@@ -30,33 +23,6 @@ const initialForm = {
   observacionField: '',
   // listaAprobadores: lstAllAprobadores,
 };
-
-const lstSinTerminar = [
-  { nroSalida: 'ADM-124-454', nombre: 'Luis Ocando' },
-  { nroSalida: 'DPT-2322-454', nombre: 'Franco Colonico' },
-  { nroSalida: 'MTT-0820-014', nombre: 'Extintores El Norte' },
-];
-
-const lstTerminadas = [
-  {
-    nroSalida: 'ADM-124-454',
-    nombre: 'Luis Ocando',
-    sinRetorno: true,
-    fecha: Date.now(),
-  },
-  {
-    nroSalida: 'DPT-2322-454',
-    nombre: 'Franco Colonico',
-    sinRetorno: false,
-    fecha: Date.now(),
-  },
-  {
-    nroSalida: 'MTT-0820-014',
-    nombre: 'Extintores El Norte',
-    sinRetorno: false,
-    fecha: Date.now(),
-  },
-];
 
 export const SalidaPage = () => {
   const [formValues, handleInputChange, reset] = useForm(initialForm);
@@ -98,10 +64,25 @@ export const SalidaPage = () => {
     setAprobadores(aprobadores);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const handleFindPersona = () => {
+    const findPersona = lstPersonas.find((item) => item.cedula === cedulaField);
+
+    !!findPersona && (document.getElementById('nombreField').value = findPersona.nombre);
+
+    // personaForm.nombreField = findPersona.nombreField;
+
+    // personaForm.nombreField = findPersona.nombre;
+    // console.log(personaForm);
+  };
+
   return (
     <div className="row flex-xl-nowrap">
       {/* col-12 col-sm-12 col-md-2 */}
-      <div className="col-md-2 col-xl-2 bg-sidebar">
+      <div className="col-md-2 col-xl-2 pb-md-3 bg-sidebar">
         <button
           className="btn btn-outline-primary btn-block mb-2"
           onClick={handleClickNuevo}>
@@ -116,7 +97,10 @@ export const SalidaPage = () => {
       </div>
 
       {/* col-12 col-sm-12 col-md-7 mb-5 */}
-      <form className="col-md-8 col-xl-7 py-md-3 bd-content" role="main">
+      <form
+        onSubmit={handleSubmit}
+        className="col-md-8 col-xl-7 pb-md-3 bd-content"
+        role="main">
         <div className="form-row">
           <div className="form-group col-md-6">
             <label>Cedula</label>
@@ -130,14 +114,14 @@ export const SalidaPage = () => {
                 onChange={handleInputChange}
               />
               <div className="input-group-append">
-                <button
-                  className="btn btn-outline-secondary"
-                  type="button"
-                  id="button-addon2">
+                <button className="btn btn-outline-secondary" onClick={handleFindPersona}>
                   Buscar
                 </button>
               </div>
             </div>
+            <small id="emailHelp" className="form-text text-muted">
+              Indique el numero con el que registro la persona o empresa.
+            </small>
           </div>
           <div className="form-group col-md-6">
             <label>Nombre</label>
@@ -147,12 +131,14 @@ export const SalidaPage = () => {
               name="nombreField"
               value={nombreField}
               readOnly
+              id="nombreField"
+              tabIndex="-1"
             />
           </div>
         </div>
 
         <div className="form-row">
-          <div className="form-group col-md-6 ">
+          <div className="form-group col-md-6  ">
             <label>Vehiculo Placa</label>
             <div className="input-group">
               <input
@@ -176,19 +162,37 @@ export const SalidaPage = () => {
 
           <div className="form-group col-md-6">
             <label>Marca</label>
-            <input type="text" className="form-control" readOnly value={marcaField} />
+            <input
+              type="text"
+              className="form-control"
+              readOnly
+              value={marcaField}
+              tabIndex="-1"
+            />
           </div>
         </div>
 
         <div className="form-row">
           <div className="form-group col-md-6">
             <label>Modelo</label>
-            <input type="text" className="form-control" readOnly value={modeloField} />
+            <input
+              type="text"
+              className="form-control"
+              readOnly
+              value={modeloField}
+              tabIndex="-1"
+            />
           </div>
 
           <div className="form-group col-md-6">
             <label>Color</label>
-            <input type="text" className="form-control" readOnly value={colorField} />
+            <input
+              type="text"
+              className="form-control"
+              readOnly
+              value={colorField}
+              tabIndex="-1"
+            />
           </div>
         </div>
 
@@ -222,6 +226,7 @@ export const SalidaPage = () => {
               className="form-control"
               readOnly
               value={conductorNombreField}
+              tabIndex="-1"
             />
           </div>
         </div>
@@ -359,7 +364,7 @@ export const SalidaPage = () => {
         </div>
       </form>
       {/* col-12 col-sm-12 col-md-3 */}
-      <div className="col-md-2 d-xl-block col-xl-3 bd-toc">
+      <div className="col-md-2 d-xl-block pb-md-3 col-xl-3 bd-toc">
         <ListaAprobadores
           lstAprobadores={aprobadores}
           handleClickAprobador={handleClickAprobador}

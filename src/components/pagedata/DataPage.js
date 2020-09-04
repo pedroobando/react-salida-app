@@ -5,7 +5,6 @@ export const DataPage = () => {
   const { url } = useRouteMatch();
   return (
     <div>
-      <h1>Pagina Principal Data</h1>
       <ul>
         <li>
           <Link to={`${url}/persona`}>Persona</Link>

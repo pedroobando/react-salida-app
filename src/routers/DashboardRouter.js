@@ -6,6 +6,9 @@ import { DashboardPage } from '../components/dashboard/DashboardPage';
 import { SalidaPage } from '../components/pagesalida/SalidaPage';
 import { AprobacionPage } from '../components/pageaprobac/AprobacionPage';
 
+import { DataPage } from '../components/pagedata/DataPage';
+import { PersonaPage } from '../components/pagedata/PersonaPage';
+
 export const DashboardRouter = () => {
   return (
     <>
@@ -16,10 +19,8 @@ export const DashboardRouter = () => {
           <Route exact path="/salidas" component={SalidaPage} />
           <Route exact path="/aprobaciones" component={AprobacionPage} />
 
-          {/* <Route exact path="/marvel" component={MarvelScreen} />
-          <Route exact path="/hero/:heroeId" component={HeroScreen} />
-          <Route exact path="/dc" component={DcScreen} />
-          <Route exact path="/search" component={SearchScreen} /> */}
+          <Route exact path="/datos" component={DataPage} />
+          <Route exact path="/datos/persona" component={PersonaPage} />
 
           <Redirect to="/" />
         </Switch>
