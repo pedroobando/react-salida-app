@@ -1,4 +1,5 @@
 import React from 'react';
+import { useForm } from '../../hooks/useForm';
 
 const ItemBorrador = ({ nroSalida, nombre, handleClick }) => {
   return (
@@ -12,7 +13,7 @@ const ItemBorrador = ({ nroSalida, nombre, handleClick }) => {
   );
 };
 
-export const BuscarDatos = ({ lstDraf, handleClickSinTerminar }) => {
+const ListaBorrador = ({ lstDraf, handleClickSinTerminar }) => {
   return (
     <div className="card border-secondary mt-3">
       <div className="card-header">Sin terminar</div>
@@ -28,5 +29,38 @@ export const BuscarDatos = ({ lstDraf, handleClickSinTerminar }) => {
         ))}
       </ul>
     </div>
+  );
+};
+
+const initialForm = {
+  nameField: '',
+};
+
+export const BuscarDatos = ({ lstDraf, handleClickSinTerminar }) => {
+  const [formValues, handleInputChange] = useForm(initialForm);
+  const { nameField } = formValues;
+
+  const handleFindPersona = () => {
+    console.log(nameField);
+  };
+
+  return (
+    <>
+      <div className="input-group mt-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="buscar"
+          name="nameField"
+          value={nameField}
+          onChange={handleInputChange}
+        />
+        <div className="input-group-append">
+          <button className="btn btn-outline-secondary" onClick={handleFindPersona}>
+            Buscar
+          </button>
+        </div>
+      </div>
+    </>
   );
 };

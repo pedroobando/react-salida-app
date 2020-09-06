@@ -4,7 +4,12 @@ import { useForm } from '../../hooks/useForm';
 import { ListaAprobadores } from './ListaAprobadores';
 import { ListaTerminada } from './ListaTerminada';
 
-import { lstAllAprobadores, lstSinTerminar, lstTerminadas, lstPersonas } from './Datos';
+import {
+  lstAllAprobadores,
+  lstSinTerminar,
+  lstTerminadas,
+  lstPersonas,
+} from '../../data/Datos';
 
 const initialForm = {
   cedulaField: '',
@@ -96,7 +101,6 @@ export const SalidaPage = () => {
         )}
       </div>
 
-      {/* col-12 col-sm-12 col-md-7 mb-5 */}
       <form
         onSubmit={handleSubmit}
         className="col-md-8 col-xl-7 pb-md-3 bd-content"
@@ -123,6 +127,7 @@ export const SalidaPage = () => {
               Indique el numero con el que registro la persona o empresa.
             </small>
           </div>
+
           <div className="form-group col-md-6">
             <label>Nombre</label>
             <input
@@ -363,7 +368,7 @@ export const SalidaPage = () => {
           </div>
         </div>
       </form>
-      {/* col-12 col-sm-12 col-md-3 */}
+
       <div className="col-md-2 d-xl-block pb-md-3 col-xl-3 bd-toc">
         <ListaAprobadores
           lstAprobadores={aprobadores}
