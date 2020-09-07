@@ -1,18 +1,27 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useForm } from '../../hooks/useForm';
+import { useDispatch } from 'react-redux';
+import { login } from '../../actions/auth';
 
-// const initialForm = {
-//   email: '',
-//   password: '',
-// };
+const initialForm = {
+  email: 'pedroobando@hotmail.com',
+  password: 123456,
+};
 
 export const LoginPage = () => {
-  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const [formValues, handleInputChange] = useForm(initialForm);
+  const { email, password } = formValues;
+
+  // const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push('/');
-    console.log('paso');
+    // history.push('/');
+    console.log(email, password);
+    dispatch(login(12345, 'pedro perez'));
   };
 
   return (
@@ -33,6 +42,8 @@ export const LoginPage = () => {
                   aria-describedby="emailHelp"
                   placeholder="Ingrese su email"
                   name="email"
+                  value={email}
+                  onChange={handleInputChange}
                   // required
                 />
               </div>
@@ -43,15 +54,11 @@ export const LoginPage = () => {
                   className="form-control"
                   placeholder="Password"
                   name="password"
-                  // required
+                  value={password}
+                  onChange={handleInputChange}
                 />
-                <small id="emailHelp" className="form-text text-muted">
-                  Nunca comparta su contraseña de correo electrónico o usuario con nadie
-                  más.
-                </small>
               </div>
 
-              <hr className="my-4" />
               <div className="col-md-8 offset-md-4">
                 <button type="submit" className="btn btn-primary">
                   Acceder
