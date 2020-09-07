@@ -1,10 +1,23 @@
+import { firebase, googleAuthProvider } from '../firebase/firebaseConfig';
+
 const { typeAuth } = require('../types/typeAuth');
 
-export const startLoginEmailPassword = (email, password) => {
+// export const startLoginEmailPassword = (email, password) => {
+//   return (dispatch) => {
+//     setInterval(() => {
+//       dispatch(login('122', 'email'));
+//     }, 3500);
+//   };
+// };
+
+export const startGoogleLogin = () => {
   return (dispatch) => {
-    setInterval(() => {
-      dispatch(login('122', 'email'));
-    }, 3500);
+    firebase
+      .auth()
+      .signInWithPopup(googleAuthProvider)
+      .then(({ user }) => {
+        dispatch(login(user.uid, user.displayName));
+      });
   };
 };
 

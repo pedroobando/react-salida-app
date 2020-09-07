@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch } from 'react-redux';
-import { startLoginEmailPassword } from '../../actions/auth';
+import { startLoginEmailPassword, startGoogleLogin } from '../../actions/auth';
 
 const initialForm = {
   email: 'pedroobando@hotmail.com',
@@ -21,7 +21,11 @@ export const LoginPage = () => {
     e.preventDefault();
     // history.push('/');
     // console.log(email, password);
-    dispatch(startLoginEmailPassword(email, password));
+    // dispatch(startLoginEmailPassword(email, password));
+  };
+
+  const handleGoogleLogin = () => {
+    dispatch(startGoogleLogin());
   };
 
   return (
@@ -66,6 +70,9 @@ export const LoginPage = () => {
                 <Link to="/auth/recovery" className="btn btn-link">
                   Olvido su contraseña?
                 </Link>
+                <button className="btn btn-link" onClick={handleGoogleLogin}>
+                  Google..
+                </button>
               </div>
             </form>
           </div>
