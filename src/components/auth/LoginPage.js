@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch } from 'react-redux';
-import { login } from '../../actions/auth';
+import { startLoginEmailPassword } from '../../actions/auth';
 
 const initialForm = {
   email: 'pedroobando@hotmail.com',
@@ -20,8 +20,8 @@ export const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // history.push('/');
-    console.log(email, password);
-    dispatch(login(12345, 'pedro perez'));
+    // console.log(email, password);
+    dispatch(startLoginEmailPassword(email, password));
   };
 
   return (
