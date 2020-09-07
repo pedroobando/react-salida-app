@@ -21,6 +21,9 @@ export const DataPage = () => {
         <li>
           <Link to={`${url}/transporte`}>Transporte</Link>
         </li>
+        <li>
+          <Link to={`${url}/usuario`}>Registro Usuario</Link>
+        </li>
       </ul>
     </div>
   );

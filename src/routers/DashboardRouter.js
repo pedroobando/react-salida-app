@@ -8,6 +8,7 @@ import { AprobacionPage } from '../components/pageaprobac/AprobacionPage';
 
 import { DataPage } from '../components/pagedata/DataPage';
 import { PersonaPage } from '../components/pagedata/PersonaPage';
+import { UsuarioPage } from '../components/pagedata/UsuarioPage';
 
 export const DashboardRouter = () => {
   return (
@@ -21,6 +22,7 @@ export const DashboardRouter = () => {
 
           <Route exact path="/datos" component={DataPage} />
           <Route exact path="/datos/persona" component={PersonaPage} />
+          <Route exact path="/datos/usuario" component={UsuarioPage} />
 
           <Redirect to="/" />
         </Switch>
