@@ -11,7 +11,7 @@ const ItemAprobador = ({ dni, nombre, roll, aprobador, handleClickAprobador }) =
             value={aprobador}
             name={dni}
             onChange={() => handleClickAprobador({ codigo: dni })}
-          />{' '}
+          />
           <span className="ml-2">{nombre}</span>
           <span className="d-md-none d-lg-inline"> - {roll}</span>
         </label>

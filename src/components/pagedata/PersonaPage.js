@@ -5,14 +5,9 @@ import { lstAllAprobadores } from '../../data/Datos';
 
 export const PersonaPage = () => {
   const handleAprobador = ({ codigo }) => {
-    // aprobadores.forEach((elAprobador) => {
-    //   if (elAprobador.dni === codigo) {
-    //     elAprobador.aprobador = !elAprobador.aprobador;
-    //   }
-    // });
-
     console.log(codigo);
   };
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -27,7 +22,7 @@ export const PersonaPage = () => {
 
           <form role="main">
             <div className="d-flex mb-3">
-              <div className="form-col col-sm-12 col-md-6 col-xl-7 pb-md-3 bg-secondary">
+              <div className="form-col col-sm-12 col-md-6 col-xl-7 pb-md-3">
                 <div className="form-group">
                   <label>Nombre</label>
                   <input type="text" className="form-control" name="nombre" />
@@ -81,6 +76,13 @@ export const PersonaPage = () => {
                     name="correoElectronico"
                     id="correoElectronico"
                   />
+                </div>
+
+                <div className="form-group">
+                  <label className="form-check-label">
+                    Activo
+                    <input className="form-check-input ml-2" type="checkbox" />
+                  </label>
                 </div>
               </div>
               <div className="col-sm-12 col-md-6 col-xl-5">

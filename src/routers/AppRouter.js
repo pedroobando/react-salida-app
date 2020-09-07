@@ -21,14 +21,14 @@ export const AppRouter = () => {
   // const nameData = 'datos';
 
   // const [authUser, setAuthUser] = useState(false);
-  const authUser = true;
+  const authUser = false;
 
   return (
     <Router>
       <div>
         <Switch>
           {/* <PublicRouter isAuthenticated={authUser} component={AuthRouter} /> */}
-          {!authUser && <Route path="/auth/login" component={AuthRouter} />}
+          {!authUser && <Route path="/auth" component={AuthRouter} />}
 
           {authUser && <Route path="/" component={DashboardRouter} />}
 
