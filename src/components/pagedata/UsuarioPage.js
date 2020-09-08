@@ -1,10 +1,11 @@
 import React from 'react';
-import { BuscarDatos } from './BuscarDatos';
+import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
 
-import { setError, removeError } from '../../actions/ui';
+import { BuscarDatos } from './BuscarDatos';
 import { useForm } from '../../hooks/useForm';
-import { useDispatch } from 'react-redux';
+import { setError, removeError } from '../../actions/ui';
+import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 
 // import { ListaAprobadores } from './ListaAprobadores';
 // import { lstAllAprobadores } from '../../data/Datos';
@@ -18,6 +19,7 @@ const initialForm = {
 
 export const UsuarioPage = () => {
   const dispatch = useDispatch();
+  const { msgError } = useSelector((state) => state.ui);
 
   const [formValues, handleInputChange, reset] = useForm(initialForm);
   const { name, email, password, password2 } = formValues;
@@ -25,7 +27,9 @@ export const UsuarioPage = () => {
   const handleRegistro = (e) => {
     e.preventDefault();
     if (isFormValid()) {
-      console.log('formulario correcto');
+      dispatch(startRegisterWithEmailPasswordName(email, password, name));
+      reset();
+      // console.log('formulario correcto');
     }
   };
 
@@ -62,9 +66,11 @@ export const UsuarioPage = () => {
           <form onSubmit={handleRegistro}>
             <div className="d-flex mb-3">
               <div className="form-col col-sm-12 col-md-6 col-xl-7 pb-md-3">
-                <div className="alert alert-dismissible alert-danger">
-                  <strong>Oh snap!</strong> and try submitting again.
-                </div>
+                {msgError && (
+                  <div className="alert alert-dismissible alert-danger">
+                    {msgError} - <strong>verificar.!</strong>
+                  </div>
+                )}
 
                 <div className="form-group">
                   <label>Nombre</label>
