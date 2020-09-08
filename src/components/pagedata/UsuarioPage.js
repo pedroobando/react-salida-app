@@ -2,7 +2,9 @@ import React from 'react';
 import { BuscarDatos } from './BuscarDatos';
 import validator from 'validator';
 
+import { setError, removeError } from '../../actions/ui';
 import { useForm } from '../../hooks/useForm';
+import { useDispatch } from 'react-redux';
 
 // import { ListaAprobadores } from './ListaAprobadores';
 // import { lstAllAprobadores } from '../../data/Datos';
@@ -15,6 +17,8 @@ const initialForm = {
 };
 
 export const UsuarioPage = () => {
+  const dispatch = useDispatch();
+
   const [formValues, handleInputChange, reset] = useForm(initialForm);
   const { name, email, password, password2 } = formValues;
 
@@ -27,16 +31,17 @@ export const UsuarioPage = () => {
 
   const isFormValid = () => {
     if (name.trim().length === 0) {
-      console.log('Nombre es requerido');
+      dispatch(setError('Nombre es requerido'));
       return false;
     } else if (!validator.isEmail(email)) {
-      console.log('Email is no valido');
+      dispatch(setError('Email is no valido'));
       return false;
     } else if (password !== password2 || password.length < 5) {
-      console.log('Password es diferente y debe tener mas de 6 caracteres');
+      dispatch(setError('Password es diferente y debe tener mas de 6 caracteres'));
       return false;
     }
 
+    dispatch(removeError());
     return true;
   };
 

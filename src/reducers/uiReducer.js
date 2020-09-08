@@ -8,9 +8,18 @@ const initialState = {
 export const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case typeUI.uiSetError:
-      break;
+      return {
+        ...state,
+        msgError: action.payload,
+      };
+
+    case typeUI.uiRemoveError:
+      return {
+        ...state,
+        msgError: null,
+      };
 
     default:
-      break;
+      return state;
   }
 };
