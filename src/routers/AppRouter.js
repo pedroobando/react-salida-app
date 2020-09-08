@@ -21,7 +21,7 @@ export const AppRouter = () => {
   // const nameData = 'datos';
 
   // const [authUser, setAuthUser] = useState(false);
-  const authUser = true;
+  const authUser = false;
 
   return (
     <Router>

@@ -2,13 +2,19 @@ import { firebase, googleAuthProvider } from '../firebase/firebaseConfig';
 
 const { typeAuth } = require('../types/typeAuth');
 
-// export const startLoginEmailPassword = (email, password) => {
-//   return (dispatch) => {
-//     setInterval(() => {
-//       dispatch(login('122', 'email'));
-//     }, 3500);
-//   };
-// };
+export const startLoginEmailPassword = (email, password) => {
+  return (dispatch) => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        dispatch(login(user.uid, user.displayName));
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+};
 
 export const startRegisterWithEmailPasswordName = (email, password, name) => {
   return (dispatch) => {

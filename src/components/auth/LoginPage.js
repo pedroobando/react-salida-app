@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { useDispatch } from 'react-redux';
 import { startLoginEmailPassword, startGoogleLogin } from '../../actions/auth';
@@ -19,9 +19,7 @@ export const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // history.push('/');
-    // console.log(email, password);
-    // dispatch(startLoginEmailPassword(email, password));
+    dispatch(startLoginEmailPassword(email, password));
   };
 
   const handleGoogleLogin = () => {
