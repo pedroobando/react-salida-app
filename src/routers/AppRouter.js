@@ -1,8 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
+import { firebase } from '../firebase/firebaseConfig';
 
 import { AuthRouter } from './AuthRouter';
 import { DashboardRouter } from './DashboardRouter';
+import { login } from '../actions/auth';
 
 // import { HomePage } from '../components/home/HomePage';
 // import { SalidaPage } from '../components/home/SalidaPage';
@@ -18,9 +23,15 @@ import { DashboardRouter } from './DashboardRouter';
 // import { PublicRouter } from './PublicRouter';
 
 export const AppRouter = () => {
-  // const nameData = 'datos';
+  const dispatch = useDispatch();
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user?.uid) {
+        dispatch(login(user.uid, user.displayName));
+      }
+    });
+  }, []);
 
-  // const [authUser, setAuthUser] = useState(false);
   const authUser = false;
 
   return (
