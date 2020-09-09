@@ -49,7 +49,7 @@ export const AppRouter = () => {
           />
           <PrivateRouter
             path="/"
-            exact
+            // exact
             isAuthenticated={isLoggedIn}
             component={DashboardRouter}
           />
