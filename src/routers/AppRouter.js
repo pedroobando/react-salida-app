@@ -10,6 +10,9 @@ import { DashboardRouter } from './DashboardRouter';
 import { login } from '../actions/auth';
 import { useState } from 'react';
 
+import { PrivateRouter } from './PrivateRouter';
+import { PublicRouter } from './PublicRouter';
+
 // import { HomePage } from '../components/home/HomePage';
 // import { SalidaPage } from '../components/home/SalidaPage';
 // import { AprobacionPage } from '../components/home/AprobacionPage';
@@ -45,16 +48,27 @@ export const AppRouter = () => {
   if (checking) {
     return <h2>Loading</h2>;
   }
-  const authUser = isLoggedIn;
+  // const authUser = isLoggedIn;
 
   return (
     <Router>
       <div>
         <Switch>
-          {/* <PublicRouter isAuthenticated={authUser} component={AuthRouter} /> */}
-          {!authUser && <Route path="/auth" component={AuthRouter} />}
+          <PublicRouter
+            path="/auth"
+            isAuthenticated={isLoggedIn}
+            component={AuthRouter}
+          />
+          <PrivateRouter
+            path="/"
+            exact
+            isAuthenticated={isLoggedIn}
+            component={DashboardRouter}
+          />
 
-          {authUser && <Route path="/" component={DashboardRouter} />}
+          {/* {!authUser && <Route path="/auth" component={AuthRouter} />} */}
+
+          {/* {authUser && <Route path="/" component={DashboardRouter} />} */}
 
           {/* <Route exact path="/salidas" component={SalidaPage} />
           <Route exact path="/aprobaciones" component={AprobacionPage} />
