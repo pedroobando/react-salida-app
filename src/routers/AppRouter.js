@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
 import { firebase } from '../firebase/firebaseConfig';
 
@@ -12,19 +13,6 @@ import { useState } from 'react';
 
 import { PrivateRouter } from './PrivateRouter';
 import { PublicRouter } from './PublicRouter';
-
-// import { HomePage } from '../components/home/HomePage';
-// import { SalidaPage } from '../components/home/SalidaPage';
-// import { AprobacionPage } from '../components/home/AprobacionPage';
-
-// import { DataPage } from '../components/data/DataPage';
-// import { DptoPage } from '../components/data/DptoPage';
-// import { TransportePage } from '../components/data/TransportePage';
-// import { PersonaPage } from '../components/data/PersonaPage';
-// import { DestinoPage } from '../components/data/DestinoPage';
-// import { MotivoSalidaPage } from '../components/data/MotivoSalidaPage';
-// import { PrivateRouter } from './PrivateRouter';
-// import { PublicRouter } from './PublicRouter';
 
 export const AppRouter = () => {
   const dispatch = useDispatch();
