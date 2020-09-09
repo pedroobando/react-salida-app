@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { startLoginEmailPassword, startGoogleLogin } from '../../actions/auth';
 
 const initialForm = {
-  email: 'pedroobando@hotmail.com',
+  email: 'pedro@hotmail.com',
   password: '123456',
 };
 

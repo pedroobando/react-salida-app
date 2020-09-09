@@ -8,6 +8,7 @@ import { firebase } from '../firebase/firebaseConfig';
 import { AuthRouter } from './AuthRouter';
 import { DashboardRouter } from './DashboardRouter';
 import { login } from '../actions/auth';
+import { useState } from 'react';
 
 // import { HomePage } from '../components/home/HomePage';
 // import { SalidaPage } from '../components/home/SalidaPage';
@@ -24,15 +25,27 @@ import { login } from '../actions/auth';
 
 export const AppRouter = () => {
   const dispatch = useDispatch();
+
+  const [checking, setChecking] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName));
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
       }
-    });
-  }, []);
 
-  const authUser = false;
+      setChecking(false);
+    });
+  }, [dispatch, checking, isLoggedIn]);
+
+  if (checking) {
+    return <h2>Loading</h2>;
+  }
+  const authUser = isLoggedIn;
 
   return (
     <Router>

@@ -1,8 +1,16 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { startLogout } from '../../actions/auth';
 
 export const NavBar = () => {
   const urlImagen = '/avatar.png';
+
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(startLogout());
+  };
   // console.log(urlImagen);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary sticky-top px-4 mb-3">
@@ -52,8 +60,11 @@ export const NavBar = () => {
             Seguridad
           </NavLink>
         </ul>
-        <div className="row align-middle">
-          <div className=" text-white">roll - Usuario</div>
+        <div className="row align-items-center">
+          <button className="btn btn-link text-white" onClick={handleLogout}>
+            logout
+          </button>
+          <div className="text-white">Usuario</div>
           <img src={urlImagen} alt="usuario" className="mx-2" style={{ width: 30 }} />
         </div>
       </div>
